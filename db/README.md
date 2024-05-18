@@ -1,3 +1,6 @@
+create database
+mariadb -u root -e "CREATE DATABASE compose;"
+
 create table
-mysql -u user -p compose < create_users_table.sql
+mariadb -u root compose < create_users_table.sql
 

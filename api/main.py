@@ -40,3 +40,7 @@ def create_user(name: str, email: str):
     cursor.execute(query, (name, email))
     db.commit()
     return {"message": "User created successfully"}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
