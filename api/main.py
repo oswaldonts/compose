@@ -19,7 +19,7 @@ while True:
             host=host,
             user=user,
             password=password,
-           database=database
+            database=database
         )
         # db.close()
         break  # Salir del bucle si la conexión tiene éxito
