@@ -16,7 +16,7 @@ app.get('/users/:id', async (req, res) => {
   const userId = req.params.id;
 
   try {
-    const response = await axios.get(`http://localhost:8000/users/${userId}`);
+    const response = await axios.get(`http://compose-api-1:8000/users/${userId}`);
 
     res.send(response.data);
   } catch (error) {
