@@ -1,18 +1,32 @@
 version: '3.8'
 
 services:
+
+  db:
+    image: mariadb:latest
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MARIADB_ROOT_PASSWORD: dbrp
+      MARIADB_USER: dbu
+      MARIADB_PASSWORD: dbp
+      MARIADB_DATABASE: db
+    volumes:
+      - ./sql-scripts:/docker-entrypoint-initdb.d
+
   api:
     build: ./api
     ports:
       - 8000:8000
     depends_on:
       - db
-
-  db:
-    build: ./db
-    restart: always
-    ports:
-      - 3306:3306
+    environment:
+      - MARIADB_HOST=db
+      - MARIADB_PORT=3306
+      - MARIADB_USER=dbu
+      - MARIADB_PASSWORD=dbp
+      - MARIADB_NAME=db
 
   front:
     build: ./front
