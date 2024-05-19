@@ -2,6 +2,7 @@ from fastapi import FastAPI
 import mysql.connector
 from dotenv import load_dotenv
 import os
+import time
 
 load_dotenv()
 
@@ -12,12 +13,28 @@ user = os.getenv("MARIADB_USER")
 password = os.getenv("MARIADB_PASSWORD")
 database = os.getenv("MARIADB_DATABASE")
 
-db = mysql.connector.connect(
-    host=host,
-    user=user,
-    password=password,
-    database=database
-)
+while True:
+    try:
+        db = mysql.connector.connect(
+            host=host,
+            user=user,
+            password=password,
+           database=database
+        )
+        # db.close()
+        break  # Salir del bucle si la conexión tiene éxito
+    except mysql.connector.Error:
+        print("Error: No se pudo conectar a la base de datos. Intentando nuevamente en 5 segundos...")
+        time.sleep(5)
+
+
+
+# db = mysql.connector.connect(
+#     host=host,
+#     user=user,
+#     password=password,
+#     database=database
+# )
 
 cursor = db.cursor()
 
