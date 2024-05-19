@@ -11,7 +11,7 @@ services:
     env_file:
       .env
     volumes:
-      - ./sql-scripts:/docker-entrypoint-initdb.d
+      - ./db:/docker-entrypoint-initdb.d
 
   api:
     build: ./api
