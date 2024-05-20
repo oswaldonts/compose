@@ -1,0 +1,158 @@
+@oswaldonts ➜ /workspaces/compose (main) $ docker compose --file stack.yml up
+WARN[0000] /workspaces/compose/stack.yml: `version` is obsolete 
+[+] Running 9/9
+ ✔ db Pulled                                                                                                              8.8s 
+   ✔ a8b1c5f80c2d Pull complete                                                                                           0.5s 
+   ✔ d452ffbe7f24 Pull complete                                                                                           0.3s 
+   ✔ 4ba312e23b80 Pull complete                                                                                           0.4s 
+   ✔ 5cff2f71f4cf Pull complete                                                                                           0.6s 
+   ✔ 7b3561610bd5 Pull complete                                                                                           0.7s 
+   ✔ 2be8c7da712f Pull complete                                                                                           1.8s 
+   ✔ 880bb1834a6d Pull complete                                                                                           0.9s 
+   ✔ 59853578cb11 Pull complete                                                                                           1.0s 
+[+] Building 2.1s (20/20) FINISHED                                                                              docker:default
+ => [api internal] load build definition from Dockerfile                                                                  0.1s
+ => => transferring dockerfile: 155B                                                                                      0.0s
+ => [api internal] load .dockerignore                                                                                     0.1s
+ => => transferring context: 2B                                                                                           0.0s
+ => [api internal] load metadata for docker.io/library/python:latest                                                      0.7s
+ => [api auth] library/python:pull token for registry-1.docker.io                                                         0.0s
+ => [api 1/4] FROM docker.io/library/python:latest@sha256:3966b81808d864099f802080d897cef36c01550472ab3955fdd716d1c665ac  0.0s
+ => [api internal] load build context                                                                                     0.0s
+ => => transferring context: 263B                                                                                         0.0s
+ => CACHED [api 2/4] WORKDIR /app                                                                                         0.0s
+ => CACHED [api 3/4] COPY . .                                                                                             0.0s
+ => CACHED [api 4/4] RUN pip install -r requirements.txt                                                                  0.0s
+ => [api] exporting to image                                                                                              0.0s
+ => => exporting layers                                                                                                   0.0s
+ => => writing image sha256:692ddf2daa455c3f8bcdcdfb1790e33a9c3418b4fbdc61b4361ed6291cc4a0a3                              0.0s
+ => => naming to docker.io/library/compose-api                                                                            0.0s
+ => [front internal] load .dockerignore                                                                                   0.1s
+ => => transferring context: 2B                                                                                           0.0s
+ => [front internal] load build definition from Dockerfile                                                                0.1s
+ => => transferring dockerfile: 128B                                                                                      0.0s
+ => [front internal] load metadata for docker.io/library/node:latest                                                      0.6s
+ => [front auth] library/node:pull token for registry-1.docker.io                                                         0.0s
+ => [front 1/4] FROM docker.io/library/node:latest@sha256:a8ba58f54e770a0f910ec36d25f8a4f1670e741a58c2e6358b2c30b575c842  0.0s
+ => [front internal] load build context                                                                                   0.0s
+ => => transferring context: 156B                                                                                         0.0s
+ => CACHED [front 2/4] WORKDIR /app                                                                                       0.0s
+ => CACHED [front 3/4] COPY . .                                                                                           0.0s
+ => CACHED [front 4/4] RUN npm install                                                                                    0.0s
+ => [front] exporting to image                                                                                            0.0s
+ => => exporting layers                                                                                                   0.0s
+ => => writing image sha256:cb5456f97bb69269636f1c1f8a02b9b7bf2740ae285853e028f740e9330ed3aa                              0.0s
+ => => naming to docker.io/library/compose-front                                                                          0.0s
+[+] Running 0/3
+ ⠼ Container db               Created                                                                                     0.4s 
+ ⠹ Container api              Created                                                                                     0.2s 
+ ⠙ Container compose-front-1  Created                                                                                     0.1s 
+Attaching to api, front-1, db
+db       | 2024-05-20 00:46:18+00:00 [Note] [Entrypoint]: Entrypoint script for MariaDB Server 1:11.3.2+maria~ubu2204 started.
+db       | 2024-05-20 00:46:19+00:00 [Warn] [Entrypoint]: /sys/fs/cgroup///memory.pressure not writable, functionality unavailable to MariaDB
+db       | 2024-05-20 00:46:19+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+db       | 2024-05-20 00:46:19+00:00 [Note] [Entrypoint]: Entrypoint script for MariaDB Server 1:11.3.2+maria~ubu2204 started.
+db       | 2024-05-20 00:46:19+00:00 [Note] [Entrypoint]: Initializing database files
+front-1  | 
+front-1  | > front@1.0.0 start
+front-1  | > node app.js
+front-1  | 
+front-1  | Servidor Express corriendo en el puerto 3000
+db       | 
+db       | 
+db       | PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER !
+db       | To do so, start the server, then issue the following command:
+db       | 
+db       | '/usr/bin/mariadb-secure-installation'
+db       | 
+db       | which will also give you the option of removing the test
+db       | databases and anonymous user created by default.  This is
+db       | strongly recommended for production servers.
+db       | 
+db       | See the MariaDB Knowledgebase at https://mariadb.com/kb
+db       | 
+db       | Please report any problems at https://mariadb.org/jira
+db       | 
+db       | The latest information about MariaDB is available at https://mariadb.org/.
+db       | 
+db       | Consider joining MariaDB's strong and vibrant community:
+db       | https://mariadb.org/get-involved/
+db       | 
+db       | 2024-05-20 00:46:25+00:00 [Note] [Entrypoint]: Database files initialized
+db       | 2024-05-20 00:46:25+00:00 [Note] [Entrypoint]: Starting temporary server
+db       | 2024-05-20 00:46:25+00:00 [Note] [Entrypoint]: Waiting for server startup
+db       | 2024-05-20  0:46:25 0 [Note] Starting MariaDB 11.3.2-MariaDB-1:11.3.2+maria~ubu2204 source revision 068a6819eb63bcb01fdfa037c9bf3bf63c33ee42 as process 98
+db       | 2024-05-20  0:46:25 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+db       | 2024-05-20  0:46:25 0 [Note] InnoDB: Using transactional memory
+db       | 2024-05-20  0:46:25 0 [Note] InnoDB: Number of transaction pools: 1
+db       | 2024-05-20  0:46:25 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+db       | 2024-05-20  0:46:25 0 [Note] mariadbd: O_TMPFILE is not supported on /tmp (disabling future attempts)
+db       | 2024-05-20  0:46:25 0 [Note] InnoDB: Using liburing
+db       | 2024-05-20  0:46:25 0 [Note] InnoDB: Initializing buffer pool, total size = 128.000MiB, chunk size = 2.000MiB
+db       | 2024-05-20  0:46:25 0 [Note] InnoDB: Completed initialization of buffer pool
+db       | 2024-05-20  0:46:25 0 [Note] InnoDB: File system buffers for log disabled (block size=512 bytes)
+db       | 2024-05-20  0:46:25 0 [Note] InnoDB: End of log at LSN=47629
+db       | 2024-05-20  0:46:25 0 [Note] InnoDB: Opened 3 undo tablespaces
+db       | 2024-05-20  0:46:25 0 [Note] InnoDB: 128 rollback segments in 3 undo tablespaces are active.
+db       | 2024-05-20  0:46:25 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+db       | 2024-05-20  0:46:25 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+db       | 2024-05-20  0:46:25 0 [Note] InnoDB: log sequence number 47629; transaction id 14
+db       | 2024-05-20  0:46:25 0 [Note] Plugin 'FEEDBACK' is disabled.
+db       | 2024-05-20  0:46:25 0 [Note] Plugin 'wsrep-provider' is disabled.
+db       | 2024-05-20  0:46:25 0 [Warning] 'user' entry 'root@e765d37599cf' ignored in --skip-name-resolve mode.
+db       | 2024-05-20  0:46:25 0 [Warning] 'proxies_priv' entry '@% root@e765d37599cf' ignored in --skip-name-resolve mode.
+db       | 2024-05-20  0:46:26 0 [Note] mariadbd: Event Scheduler: Loaded 0 events
+db       | 2024-05-20  0:46:26 0 [Note] mariadbd: ready for connections.
+db       | Version: '11.3.2-MariaDB-1:11.3.2+maria~ubu2204'  socket: '/run/mysqld/mysqld.sock'  port: 0  mariadb.org binary distribution
+db       | 2024-05-20 00:46:26+00:00 [Note] [Entrypoint]: Temporary server started.
+db       | 2024-05-20 00:46:28+00:00 [Note] [Entrypoint]: Creating database db
+db       | 2024-05-20 00:46:28+00:00 [Note] [Entrypoint]: Creating user dbu
+db       | 2024-05-20 00:46:28+00:00 [Note] [Entrypoint]: Giving user dbu access to schema db
+db       | 2024-05-20 00:46:28+00:00 [Note] [Entrypoint]: Securing system users (equivalent to running mysql_secure_installation)
+db       | 
+db       | 2024-05-20 00:46:28+00:00 [Note] [Entrypoint]: /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/create_users_table.sql
+db       | 
+db       | 
+db       | 2024-05-20 00:46:28+00:00 [Note] [Entrypoint]: Stopping temporary server
+db       | 2024-05-20  0:46:28 0 [Note] mariadbd (initiated by: unknown): Normal shutdown
+db       | 2024-05-20  0:46:28 0 [Note] InnoDB: FTS optimize thread exiting.
+db       | 2024-05-20  0:46:28 0 [Note] InnoDB: Starting shutdown...
+db       | 2024-05-20  0:46:28 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+db       | 2024-05-20  0:46:28 0 [Note] InnoDB: Buffer pool(s) dump completed at 240520  0:46:28
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: Removed temporary tablespace data file: "./ibtmp1"
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: Shutdown completed; log sequence number 51434; transaction id 27
+db       | 2024-05-20  0:46:29 0 [Note] mariadbd: Shutdown complete
+db       | 
+db       | 2024-05-20 00:46:29+00:00 [Note] [Entrypoint]: Temporary server stopped
+db       | 
+db       | 2024-05-20 00:46:29+00:00 [Note] [Entrypoint]: MariaDB init process done. Ready for start up.
+db       | 
+db       | 2024-05-20  0:46:29 0 [Note] Starting MariaDB 11.3.2-MariaDB-1:11.3.2+maria~ubu2204 source revision 068a6819eb63bcb01fdfa037c9bf3bf63c33ee42 as process 1
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: Using transactional memory
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: Number of transaction pools: 1
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: Using crc32 + pclmulqdq instructions
+db       | 2024-05-20  0:46:29 0 [Note] mariadbd: O_TMPFILE is not supported on /tmp (disabling future attempts)
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: Using liburing
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: Initializing buffer pool, total size = 128.000MiB, chunk size = 2.000MiB
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: Completed initialization of buffer pool
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: File system buffers for log disabled (block size=512 bytes)
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: End of log at LSN=51434
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: Opened 3 undo tablespaces
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: 128 rollback segments in 3 undo tablespaces are active.
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: Setting file './ibtmp1' size to 12.000MiB. Physically writing the file full; Please wait ...
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: File './ibtmp1' size is now 12.000MiB.
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: log sequence number 51434; transaction id 28
+db       | 2024-05-20  0:46:29 0 [Note] Plugin 'FEEDBACK' is disabled.
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+db       | 2024-05-20  0:46:29 0 [Note] Plugin 'wsrep-provider' is disabled.
+db       | 2024-05-20  0:46:29 0 [Note] InnoDB: Buffer pool(s) load completed at 240520  0:46:29
+db       | 2024-05-20  0:46:29 0 [Note] Server socket created on IP: '0.0.0.0'.
+db       | 2024-05-20  0:46:29 0 [Note] Server socket created on IP: '::'.
+db       | 2024-05-20  0:46:29 0 [Note] mariadbd: Event Scheduler: Loaded 0 events
+db       | 2024-05-20  0:46:29 0 [Note] mariadbd: ready for connections.
+db       | Version: '11.3.2-MariaDB-1:11.3.2+maria~ubu2204'  socket: '/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
+api      | INFO:     Started server process [1]
+api      | INFO:     Waiting for application startup.
+api      | INFO:     Application startup complete.
+api      | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
